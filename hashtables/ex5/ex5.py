@@ -3,10 +3,25 @@
 
 
 def finder(files, queries):
-    """
-    YOUR CODE HERE
-    """
-    # Your code here
+    ht = {}
+
+    # add every path to ht: key = file name
+    for path in files:
+        splitted  = path.split("/")
+
+        filename = splitted[len(splitted)-1]
+        
+        # check same filename in different paths
+        if filename in ht:
+            ht[filename] += [path]
+        else:
+            ht[filename] = [path]
+
+    result = []
+
+    for filename in queries:
+        if filename in ht:
+            result += ht[filename]
 
     return result
 

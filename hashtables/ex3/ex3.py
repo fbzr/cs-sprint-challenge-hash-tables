@@ -1,8 +1,21 @@
 def intersection(arrays):
-    """
-    YOUR CODE HERE
-    """
-    # Your code here
+    # loop through first list
+        # add every element to dict as key
+    dataset = {}
+    for item in arrays[0]:
+        dataset[item] = 1
+    
+    result = []
+    # go through every list
+    # index will represent how many lists we have looped through
+    for index, current_list in enumerate(arrays[1:], 1):
+        for item in current_list:
+            # increment items value in hash table
+            if item in dataset:
+                dataset[item] += 1
+                # if it is the last list: if items value in ht matches with the number of arrays checked, add item to result array
+                if index == len(arrays) - 1 and dataset[item] == len(arrays):
+                    result.append(item)
 
     return result
 
